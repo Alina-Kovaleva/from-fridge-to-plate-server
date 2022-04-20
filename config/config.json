@@ -17,5 +17,8 @@
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": "0"
+  },
+  "pool": {
+    "max": 2
   }
 }
