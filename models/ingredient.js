@@ -9,6 +9,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      // ingredient.belongsToMany(models.useringredient, {
+      //   foreignKey: "ingredientId",
+      // });
+      // ingredient.belongsToMany(models.recipeingredientamount, {
+      //   foreignKey: "ingredientId",
+      // });
+      ingredient.belongsToMany(models.recipe, {
+        through: "recipeingredientamount",
+        foreignKey: "ingredientId",
+      });
+      ingredient.belongsToMany(models.user, {
+        through: "useringredient",
+        foreignKey: "ingredientId",
+      });
     }
   }
   ingredient.init(

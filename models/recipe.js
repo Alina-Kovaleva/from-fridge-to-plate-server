@@ -9,7 +9,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      recipe.belongsTo(models.user);
+      // recipe.belongsTo(models.user, { foreignKey: "userId" });
+      // recipe.hasMany(models.userfavoriterecipe, { foreignKey: "recipeId" });
+      // recipe.hasMany(models.recipeingredientamount, { foreignKey: "recipeId" });
+      recipe.belongsToMany(models.ingredient, {
+        through: "recipeingredientamount",
+        foreignKey: "recipeId",
+      });
+      recipe.belongsToMany(models.user, {
+        through: "userfavoriterecipe",
+        foreignKey: "recipeId",
+      });
+      recipe.belongsTo(models.user, { foreignKey: "userId" });
     }
   }
   recipe.init(
@@ -29,6 +40,10 @@ module.exports = (sequelize, DataTypes) => {
       },
       description: {
         type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      userId: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     },

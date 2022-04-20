@@ -10,9 +10,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      user.hasMany(models.recipe);
-      user.hasOne(models.myfridge);
-      user.hasOne(models.userfavoriterecipe);
+      user.hasMany(models.recipe, { foreignKey: "userId" });
+      user.belongsToMany(models.recipe, {
+        through: "userfavoriterecipe",
+        foreignKey: "userId",
+      });
+      user.belongsToMany(models.ingredient, {
+        through: "useringredient",
+        foreignKey: "userId",
+      });
     }
   }
   user.init(
