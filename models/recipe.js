@@ -29,6 +29,8 @@ module.exports = (sequelize, DataTypes) => {
       title: {
         type: DataTypes.STRING,
         allowNull: false,
+        defaultValue:
+          "https://res.cloudinary.com/crazylittled/image/upload/v1650540678/codaisseur/default.png",
       },
       difficulty: {
         type: DataTypes.INTEGER,

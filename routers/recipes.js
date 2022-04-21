@@ -43,44 +43,47 @@ router.get("/:id", async (req, res, next) => {
 
 // POST a new recipe
 // test POST -c "application/json" http://localhost:4000/recipes/new [postNewRecipeTest.json]
-router.post("/new", authMiddleWare, async (req, res, next) => {
-  const user = await User.findByPk(req.userId);
-  if (user === null) {
-    return res.status(404).send({ message: "This user does not exist" });
-  }
-  const { imageUrl, title, difficulty, duration, description, ingredients } =
-    req.body;
-  const recipe = await Recipes.create({
-    imageUrl,
-    title,
-    difficulty,
-    duration,
-    description,
-    userId: user.id,
-    userId: 1,
-  });
-  //   console.log(ingredients);
-  for (const ingredient of ingredients) {
-    let existingIngredient = await Ingredient.findOne({
-      where: { name: ingredient.name },
+router.post(
+  "/new",
+  /*authMiddleWare,*/ async (req, res, next) => {
+    // const user = await User.findByPk(req.userId);
+    // if (user === null) {
+    //   return res.status(404).send({ message: "This user does not exist" });
+    // }
+    const { imageUrl, title, difficulty, duration, description, ingredients } =
+      req.body;
+    const recipe = await Recipes.create({
+      imageUrl,
+      title,
+      difficulty,
+      duration,
+      description,
+      // userId: user.id,
+      userId: 1,
     });
-    // console.log(ingredient);
-    // console.log(existingIngredient);
-    if (existingIngredient === null) {
-      //   console.log("creating ", ingredient.name);
-      existingIngredient = await Ingredient.create({
-        name: ingredient.name,
+    //   console.log(ingredients);
+    for (const ingredient of ingredients) {
+      let existingIngredient = await Ingredient.findOne({
+        where: { name: ingredient.name },
+      });
+      // console.log(ingredient);
+      // console.log(existingIngredient);
+      if (existingIngredient === null) {
+        //   console.log("creating ", ingredient.name);
+        existingIngredient = await Ingredient.create({
+          name: ingredient.name,
+        });
+      }
+
+      // console.log("creating connection");
+      const addRecipeIngredient = await Recipeingredientamount.create({
+        recipeId: recipe.id,
+        ingredientId: existingIngredient.id,
+        amount: ingredient.amount,
       });
     }
-
-    // console.log("creating connection");
-    const addRecipeIngredient = await Recipeingredientamount.create({
-      recipeId: recipe.id,
-      ingredientId: existingIngredient.id,
-      amount: ingredient.amount,
-    });
+    return res.status(201).send({ message: "Recipe created", recipe });
   }
-  return res.status(201).send({ message: "Recipe created", recipe });
-});
+);
 
 module.exports = router;

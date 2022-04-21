@@ -10,6 +10,8 @@ module.exports = {
       },
       imageUrl: {
         type: Sequelize.STRING,
+        defaultValue:
+          "https://res.cloudinary.com/crazylittled/image/upload/v1650540678/codaisseur/default.png",
       },
       title: {
         type: Sequelize.STRING,
