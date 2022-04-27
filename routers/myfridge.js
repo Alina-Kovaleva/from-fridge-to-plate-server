@@ -14,12 +14,12 @@ const router = new Router();
 router.get("/", authMiddleWare, async (req, res, next) => {
   try {
     let user = req.user;
-    console.log("user= ", user);
+    // console.log("user= ", user);
     if (user === null) {
       return res.status(404).send({ message: "This user does not exist" });
     }
     user = await User.findByPk(user.id, { include: [Ingredient] });
-    console.log("user= ", user);
+    // console.log("user= ", user);
     res.send(user.ingredients);
   } catch (e) {
     console.log(e.message);
@@ -31,13 +31,13 @@ router.get("/", authMiddleWare, async (req, res, next) => {
 router.post("/new", authMiddleWare, async (req, res, next) => {
   // console.log("res= ", res);
   const user = req.user;
-  console.log("user= ", user);
+  // console.log("user= ", user);
   if (user === null) {
     return res.status(404).send({ message: "This user does not exist" });
   }
-  console.log("req.body= ", req.body);
+  // console.log("req.body= ", req.body);
   for (const product of req.body.products) {
-    console.log(product.productName);
+    // console.log(product.productName);
     let existingProduct = await Ingredient.findOne({
       where: { name: product.productName },
     });

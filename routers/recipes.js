@@ -34,7 +34,7 @@ function sortHelper(recipe, userFridge) {
   }
   recipe.setDataValue("missingIngredients", missing);
   // console.log(recipe);
-  console.log("sorting. ", recipe.id, " ", missing);
+  // console.log("sorting. ", recipe.id, " ", missing);
   return missing;
 }
 
@@ -90,11 +90,11 @@ router.get("/:id", async (req, res, next) => {
 router.post("/new", authMiddleWare, async (req, res, next) => {
   // console.log("res= ", res);
   const user = req.user;
-  console.log("user= ", user);
+  // console.log("user= ", user);
   if (user === null) {
     return res.status(404).send({ message: "This user does not exist" });
   }
-  console.log("req.body= ", req.body);
+  // console.log("req.body= ", req.body);
   let { imageUrl, title, difficulty, duration, description, ingredients } =
     req.body;
   if (imageUrl === "")
