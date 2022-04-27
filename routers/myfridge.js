@@ -1,0 +1,60 @@
+const { Router } = require("express");
+const Recipes = require("../models").recipe;
+const User = require("../models").user;
+const Recipeingredientamount = require("../models").recipeingredientamount;
+const Ingredient = require("../models").ingredient;
+const Favourites = require("../models").userfavoriterecipe;
+const authMiddleWare = require("../auth/middleware");
+const UserIngredient = require("../models").useringredient;
+
+const router = new Router();
+
+//get user ingredients
+// test http GET :4000/recipes/myfridge
+router.get("/", authMiddleWare, async (req, res, next) => {
+  try {
+    let user = req.user;
+    console.log("user= ", user);
+    if (user === null) {
+      return res.status(404).send({ message: "This user does not exist" });
+    }
+    user = await User.findByPk(user.id, { include: [Ingredient] });
+    console.log("user= ", user);
+    res.send(user.ingredients);
+  } catch (e) {
+    console.log(e.message);
+    next(e);
+  }
+});
+
+// add products into my fridge
+router.post("/new", authMiddleWare, async (req, res, next) => {
+  // console.log("res= ", res);
+  const user = req.user;
+  console.log("user= ", user);
+  if (user === null) {
+    return res.status(404).send({ message: "This user does not exist" });
+  }
+  console.log("req.body= ", req.body);
+  for (const product of req.body.products) {
+    console.log(product.productName);
+    let existingProduct = await Ingredient.findOne({
+      where: { name: product.productName },
+    });
+    if (existingProduct === null) {
+      existingProduct = await Ingredient.create({
+        name: product.productName,
+      });
+    }
+    const addUserIngredient = await UserIngredient.create({
+      userId: user.id,
+      ingredientId: existingProduct.id,
+      amount: product.amount,
+    });
+    return res
+      .status(201)
+      .send({ message: "Products added ", addUserIngredient });
+  }
+});
+
+module.exports = router;

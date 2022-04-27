@@ -111,6 +111,11 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: "russet potato",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

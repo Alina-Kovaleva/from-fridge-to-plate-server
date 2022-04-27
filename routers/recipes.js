@@ -90,32 +90,18 @@ router.post("/new", authMiddleWare, async (req, res, next) => {
   return res.status(201).send({ message: "Recipe created", recipe });
 });
 
-// Get all favourite recipes by User id
-router.get("/facourites", async (req, res, next) => {
-  try {
-    const { userId } = req.params;
-    const user = await User.findByPk(userId);
-    if (user === null) {
-      return res.status(404).send({ message: "This user does not exist" });
-    }
-  } catch (e) {
-    console.log(e.message);
-    next(e);
-  }
-});
-
-//get user ingredients
-router.get("/myfridge/:userId", async (req, res, next) => {
-  try {
-    const userId = req.params.userId;
-    console.log("userId= ", userId);
-    const user = await User.findByPk(userId, { include: [Ingredient] });
-    console.log("user= ", user);
-    res.send(user.ingredients);
-  } catch (e) {
-    console.log(e.message);
-    next(e);
-  }
-});
+// // Get all favourite recipes by User id
+// router.get("/facourites", async (req, res, next) => {
+//   try {
+//     const { userId } = req.params;
+//     const user = await User.findByPk(userId);
+//     if (user === null) {
+//       return res.status(404).send({ message: "This user does not exist" });
+//     }
+//   } catch (e) {
+//     console.log(e.message);
+//     next(e);
+//   }
+// });
 
 module.exports = router;

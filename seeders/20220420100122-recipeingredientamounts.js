@@ -56,6 +56,30 @@ module.exports = {
     const ingredient14 = await Ingredient.findOne({
       where: { name: "ground black pepper" },
     });
+    const ingredient15 = await Ingredient.findOne({
+      where: { name: "unsalted butter" },
+    });
+    const ingredient16 = await Ingredient.findOne({
+      where: { name: "cabbage" },
+    });
+    const ingredient17 = await Ingredient.findOne({
+      where: { name: "celery" },
+    });
+    const ingredient18 = await Ingredient.findOne({
+      where: { name: "bay leaf" },
+    });
+    const ingredient19 = await Ingredient.findOne({
+      where: { name: "black peppercorns" },
+    });
+    const ingredient20 = await Ingredient.findOne({
+      where: { name: "russet potato" },
+    });
+    const ingredient21 = await Ingredient.findOne({
+      where: { name: "tomato" },
+    });
+    const ingredient22 = await Ingredient.findOne({
+      where: { name: "fresh dill" },
+    });
 
     await queryInterface.bulkInsert(
       "recipeingredientamounts",
@@ -64,12 +88,9 @@ module.exports = {
         //   recipeId: "",
         //   ingredientId: "",
         //   amount: "",
+        // createdAt: new Date(),
+        //   updatedAt: new Date(),
         // },
-        {
-          recipeId: recipe3.id,
-          ingredientId: "",
-          amount: "",
-        },
 
         {
           recipeId: recipe1.id,
@@ -184,6 +205,92 @@ module.exports = {
           recipeId: recipe2.id,
           ingredientId: ingredient11.id,
           amount: null,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe3.id,
+          ingredientId: ingredient22.id,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe3.id,
+          ingredientId: ingredient7.id,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe3.id,
+          ingredientId: ingredient14.id,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe3.id,
+          ingredientId: ingredient9.id,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe3.id,
+          ingredientId: ingredient21.id,
+          amount: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe3.id,
+          ingredientId: ingredient20.id,
+          amount: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe3.id,
+          ingredientId: ingredient19.id,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe3.id,
+          ingredientId: ingredient18.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe3.id,
+          ingredientId: ingredient17.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe3.id,
+          ingredientId: ingredient2.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe3.id,
+          ingredientId: ingredient16.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe3.id,
+          ingredientId: ingredient10.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe3.id,
+          ingredientId: ingredient15.id,
+          amount: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
