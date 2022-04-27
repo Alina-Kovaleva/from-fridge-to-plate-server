@@ -46,14 +46,22 @@ router.post("/new", authMiddleWare, async (req, res, next) => {
         name: product.productName,
       });
     }
-    const addUserIngredient = await UserIngredient.create({
-      userId: user.id,
-      ingredientId: existingProduct.id,
-      amount: product.amount,
+    let existingUserIngredient = await UserIngredient.findOne({
+      where: { userId: user.id, ingredientId: existingProduct.id },
     });
+    if (existingUserIngredient) {
+      existingUserIngredient.amount += +product.amount;
+      await existingUserIngredient.save();
+    } else {
+      existingUserIngredient = await UserIngredient.create({
+        userId: user.id,
+        ingredientId: existingProduct.id,
+        amount: product.amount,
+      });
+    }
     return res
       .status(201)
-      .send({ message: "Products added ", addUserIngredient });
+      .send({ message: "Products added ", existingUserIngredient });
   }
 });
 
