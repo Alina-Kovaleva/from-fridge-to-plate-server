@@ -3,6 +3,7 @@ const Recipes = require("../models").recipe;
 const User = require("../models").user;
 const Recipeingredientamount = require("../models").recipeingredientamount;
 const Ingredient = require("../models").ingredient;
+const Favourites = require("../models").userfavoriterecipe;
 const authMiddleWare = require("../auth/middleware");
 
 const router = new Router();
@@ -43,47 +44,78 @@ router.get("/:id", async (req, res, next) => {
 
 // POST a new recipe
 // test POST -c "application/json" http://localhost:4000/recipes/new [postNewRecipeTest.json]
-router.post(
-  "/new",
-  /*authMiddleWare,*/ async (req, res, next) => {
-    // const user = await User.findByPk(req.userId);
-    // if (user === null) {
-    //   return res.status(404).send({ message: "This user does not exist" });
-    // }
-    const { imageUrl, title, difficulty, duration, description, ingredients } =
-      req.body;
-    const recipe = await Recipes.create({
-      imageUrl,
-      title,
-      difficulty,
-      duration,
-      description,
-      // userId: user.id,
-      userId: 1,
+router.post("/new", authMiddleWare, async (req, res, next) => {
+  // console.log("res= ", res);
+  const user = req.user;
+  console.log("user= ", user);
+  if (user === null) {
+    return res.status(404).send({ message: "This user does not exist" });
+  }
+  console.log("req.body= ", req.body);
+  let { imageUrl, title, difficulty, duration, description, ingredients } =
+    req.body;
+  if (imageUrl === "")
+    imageUrl =
+      "https://res.cloudinary.com/crazylittled/image/upload/v1650540678/codaisseur/default.png";
+  const recipe = await Recipes.create({
+    imageUrl,
+    title,
+    difficulty,
+    duration,
+    description,
+    userId: user.id,
+    // userId: 1,
+  });
+  //   console.log(ingredients);
+  for (const ingredient of ingredients) {
+    let existingIngredient = await Ingredient.findOne({
+      where: { name: ingredient.ingredientName },
     });
-    //   console.log(ingredients);
-    for (const ingredient of ingredients) {
-      let existingIngredient = await Ingredient.findOne({
-        where: { name: ingredient.name },
-      });
-      // console.log(ingredient);
-      // console.log(existingIngredient);
-      if (existingIngredient === null) {
-        //   console.log("creating ", ingredient.name);
-        existingIngredient = await Ingredient.create({
-          name: ingredient.name,
-        });
-      }
-
-      // console.log("creating connection");
-      const addRecipeIngredient = await Recipeingredientamount.create({
-        recipeId: recipe.id,
-        ingredientId: existingIngredient.id,
-        amount: ingredient.amount,
+    // console.log(ingredient);
+    // console.log(existingIngredient);
+    if (existingIngredient === null) {
+      //   console.log("creating ", ingredient.name);
+      existingIngredient = await Ingredient.create({
+        name: ingredient.ingredientName,
       });
     }
-    return res.status(201).send({ message: "Recipe created", recipe });
+
+    // console.log("creating connection");
+    const addRecipeIngredient = await Recipeingredientamount.create({
+      recipeId: recipe.id,
+      ingredientId: existingIngredient.id,
+      amount: ingredient.amount,
+    });
   }
-);
+  return res.status(201).send({ message: "Recipe created", recipe });
+});
+
+// Get all favourite recipes by User id
+router.get("/facourites", async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+    const user = await User.findByPk(userId);
+    if (user === null) {
+      return res.status(404).send({ message: "This user does not exist" });
+    }
+  } catch (e) {
+    console.log(e.message);
+    next(e);
+  }
+});
+
+//get user ingredients
+router.get("/myfridge/:userId", async (req, res, next) => {
+  try {
+    const userId = req.params.userId;
+    console.log("userId= ", userId);
+    const user = await User.findByPk(userId, { include: [Ingredient] });
+    console.log("user= ", user);
+    res.send(user.ingredients);
+  } catch (e) {
+    console.log(e.message);
+    next(e);
+  }
+});
 
 module.exports = router;

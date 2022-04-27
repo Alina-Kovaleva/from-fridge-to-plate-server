@@ -51,6 +51,66 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: "onion",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "garlic clove",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "flour",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "oil",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "ground black pepper",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "cabbage",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "celery",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "bay leaf",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "black peppercorns",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "tomato",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "fresh dill",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "unsalted butter",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
