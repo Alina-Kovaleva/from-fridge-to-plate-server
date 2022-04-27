@@ -5,18 +5,61 @@ const Recipeingredientamount = require("../models").recipeingredientamount;
 const Ingredient = require("../models").ingredient;
 const Favourites = require("../models").userfavoriterecipe;
 const authMiddleWare = require("../auth/middleware");
+const optionalAuthMiddleWare = require("../auth/optionalauth");
+const UserIngredient = require("../models").useringredient;
 
 const router = new Router();
+
+// how many ingredients user is missing
+function sortHelper(recipe, userFridge) {
+  let missing = 0;
+  for (const recipeIngredient of recipe.ingredients) {
+    let found = false;
+    for (const userIngredient of userFridge) {
+      // console.log("?????????");
+      // console.log(userIngredient);
+      if (recipeIngredient.id === userIngredient.ingredientId) {
+        if (
+          !recipeIngredient.amount ||
+          +recipeIngredient.amount <= +userIngredient.amount
+        ) {
+          found = true;
+        }
+        break;
+      }
+    }
+    if (!found) {
+      missing++;
+    }
+  }
+  recipe.setDataValue("missingIngredients", missing);
+  // console.log(recipe);
+  console.log("sorting. ", recipe.id, " ", missing);
+  return missing;
+}
 
 // Get all recipes
 // test http GET :4000/recipes
 
-router.get("/", async (req, res, next) => {
+router.get("/", optionalAuthMiddleWare, async (req, res, next) => {
   try {
-    const recipes = await Recipes.findAll();
+    let recipes = await Recipes.findAll({ include: [Ingredient] });
+    // console.log("recipes = ", recipes);
     if (!recipes) {
       response.status(404).send("Something went wrong, recipes not found");
     }
+    // console.log("req.user= ", req.user);
+    if (req.user) {
+      const userFridge = await UserIngredient.findAll({
+        where: { userId: req.user.id },
+      });
+      // console.log("userFridge= ", userFridge);
+      // recipes = recipes.sort((a, b) => a.title.localeCompare(b.title));
+      recipes = recipes.sort(
+        (a, b) => sortHelper(a, userFridge) - sortHelper(b, userFridge)
+      );
+    }
+    // console.log("recipes = ", recipes);
     res.send(recipes);
   } catch (e) {
     console.log(e.message);
