@@ -33,36 +33,47 @@ router.post("/new", authMiddleWare, async (req, res, next) => {
   // console.log("res= ", res);
   const user = req.user;
   // console.log("user= ", user);
-  if (user === null) {
+  if (!user) {
     return res.status(404).send({ message: "This user does not exist" });
   }
-  console.log("req.body= ", req.body);
-  for (const product of req.body.products) {
-    // console.log(product.productName);
-    let existingProduct = await Ingredient.findOne({
-      where: { name: product.productName },
-    });
-    if (existingProduct === null) {
-      existingProduct = await Ingredient.create({
-        name: product.productName,
+
+  try {
+    const products = [];
+    for (const product of req.body.products) {
+      let existingProduct = await Ingredient.findOne({
+        where: { name: product.productName },
       });
-    }
-    let existingUserIngredient = await UserIngredient.findOne({
-      where: { userId: user.id, ingredientId: existingProduct.id },
-    });
-    if (existingUserIngredient) {
+      if (!existingProduct) {
+        existingProduct = await Ingredient.create({
+          name: product.productName,
+        });
+      }
+      let existingUserIngredient = await UserIngredient.findOne({
+        where: { userId: user.id, ingredientId: existingProduct.id },
+      });
+
+      if (!existingUserIngredient) {
+        existingUserIngredient = await UserIngredient.create({
+          userId: user.id,
+          ingredientId: existingProduct.id,
+          amount: 0,
+        });
+      }
+
       existingUserIngredient.amount += +product.amount;
       await existingUserIngredient.save();
-    } else {
-      existingUserIngredient = await UserIngredient.create({
-        userId: user.id,
-        ingredientId: existingProduct.id,
-        amount: product.amount,
+
+      products.push({
+        ...existingProduct.dataValues,
+        useringredient: {
+          ...existingUserIngredient.dataValues,
+        },
       });
     }
-    return res
-      .status(201)
-      .send({ message: "Products added ", existingUserIngredient });
+
+    res.status(201).send(products);
+  } catch (err) {
+    res.send(err);
   }
 });
 
