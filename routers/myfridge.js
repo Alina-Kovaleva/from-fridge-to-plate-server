@@ -65,4 +65,28 @@ router.post("/new", authMiddleWare, async (req, res, next) => {
   }
 });
 
+router.put("/update", authMiddleWare, async (req, res, next) => {
+  const user = req.user;
+  if (user === null) {
+    return res.status(404).send({ message: "This user does not exist" });
+  }
+  console.log("req.body.brduct = ", req.body);
+  const userFridgeItem = await UserIngredient.findOne({
+    where: { userId: user.id, ingredientId: req.body.ingredientId },
+  });
+  if (!userFridgeItem) {
+    return res.status(200).send({ message: "Ingredient has been deleted" });
+  }
+  if (+req.body.amount < 0) {
+    return res.status(200).send({ message: "Amount can't be less then 0" });
+  }
+  if (+req.body.amount === 0) {
+    await userFridgeItem.destroy();
+  } else {
+    userFridgeItem.amount = req.body.amount;
+    await userFridgeItem.save();
+  }
+  return res.status(201).send({ message: "Change succes", userFridgeItem });
+});
+
 module.exports = router;
