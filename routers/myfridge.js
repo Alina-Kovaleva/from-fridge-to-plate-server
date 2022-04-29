@@ -27,6 +27,7 @@ router.get("/", authMiddleWare, async (req, res, next) => {
   }
 });
 
+// Have some problem.  adding only first ingredient from array of ingredients
 // add products into my fridge
 router.post("/new", authMiddleWare, async (req, res, next) => {
   // console.log("res= ", res);
@@ -35,7 +36,7 @@ router.post("/new", authMiddleWare, async (req, res, next) => {
   if (user === null) {
     return res.status(404).send({ message: "This user does not exist" });
   }
-  // console.log("req.body= ", req.body);
+  console.log("req.body= ", req.body);
   for (const product of req.body.products) {
     // console.log(product.productName);
     let existingProduct = await Ingredient.findOne({
