@@ -48,6 +48,7 @@ router.post("/new", authMiddleWare, async (req, res, next) => {
           name: product.productName.toLowerCase(),
         });
       }
+
       let existingUserIngredient = await UserIngredient.findOne({
         where: { userId: user.id, ingredientId: existingProduct.id },
       });
@@ -71,7 +72,16 @@ router.post("/new", authMiddleWare, async (req, res, next) => {
       });
     }
 
-    res.status(201).send(products);
+    const userProducts = await User.findByPk(user.id, {
+      include: [Ingredient],
+    });
+
+    res
+      .status(201)
+      .send({
+        products: userProducts.ingredients,
+        message: "Products added successfully",
+      });
   } catch (err) {
     res.send(err);
   }
