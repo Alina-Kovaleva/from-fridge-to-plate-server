@@ -41,11 +41,11 @@ router.post("/new", authMiddleWare, async (req, res, next) => {
     const products = [];
     for (const product of req.body.products) {
       let existingProduct = await Ingredient.findOne({
-        where: { name: product.productName },
+        where: { name: product.productName.toLowerCase() },
       });
       if (!existingProduct) {
         existingProduct = await Ingredient.create({
-          name: product.productName,
+          name: product.productName.toLowerCase(),
         });
       }
       let existingUserIngredient = await UserIngredient.findOne({
