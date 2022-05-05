@@ -13,6 +13,18 @@ module.exports = {
     const recipe3 = await Recipe.findOne({
       where: { title: "Cabbage Soup (Shchi)" },
     });
+    const recipe4 = await Recipe.findOne({
+      where: { title: "Dressed Herring" },
+    });
+    const recipe5 = await Recipe.findOne({
+      where: { title: "Mimosa Salad" },
+    });
+    const recipe6 = await Recipe.findOne({
+      where: { title: "Okroshka (Summer Soup)" },
+    });
+    const recipe7 = await Recipe.findOne({
+      where: { title: "Cottage Cheese Pancake" },
+    });
 
     const ingredient1 = await Ingredient.findOne({
       where: { name: "potato" },
@@ -80,6 +92,39 @@ module.exports = {
     const ingredient22 = await Ingredient.findOne({
       where: { name: "fresh dill" },
     });
+    const ingredient23 = await Ingredient.findOne({
+      where: { name: "pickled herring" },
+    });
+    const ingredient24 = await Ingredient.findOne({
+      where: { name: "beetroot" },
+    });
+    const ingredient25 = await Ingredient.findOne({
+      where: { name: "cans tuna" },
+    });
+    const ingredient26 = await Ingredient.findOne({
+      where: { name: "mineral water" },
+    });
+    const ingredient27 = await Ingredient.findOne({
+      where: { name: "vinegar" },
+    });
+    const ingredient28 = await Ingredient.findOne({
+      where: { name: "green onion" },
+    });
+    const ingredient29 = await Ingredient.findOne({
+      where: { name: "cucumber" },
+    });
+    const ingredient30 = await Ingredient.findOne({
+      where: { name: "cottage cheese" },
+    });
+    const ingredient31 = await Ingredient.findOne({
+      where: { name: "vanilla extract" },
+    });
+    const ingredient32 = await Ingredient.findOne({
+      where: { name: "baking powder" },
+    });
+    const ingredient33 = await Ingredient.findOne({
+      where: { name: "sugar" },
+    });
 
     await queryInterface.bulkInsert(
       "recipeingredientamounts",
@@ -91,7 +136,55 @@ module.exports = {
         // createdAt: new Date(),
         //   updatedAt: new Date(),
         // },
-
+        {
+          recipeId: recipe7.id,
+          ingredientId: ingredient11.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe7.id,
+          ingredientId: ingredient33.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe7.id,
+          ingredientId: ingredient32.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe7.id,
+          ingredientId: ingredient31.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe7.id,
+          ingredientId: ingredient13.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe7.id,
+          ingredientId: ingredient5.id,
+          amount: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe7.id,
+          ingredientId: ingredient30.id,
+          amount: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
         {
           recipeId: recipe1.id,
           ingredientId: ingredient1.id,
@@ -291,6 +384,202 @@ module.exports = {
           recipeId: recipe3.id,
           ingredientId: ingredient15.id,
           amount: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe4.id,
+          ingredientId: ingredient11.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe4.id,
+          ingredientId: ingredient14.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe4.id,
+          ingredientId: ingredient9.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe4.id,
+          ingredientId: ingredient8.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe4.id,
+          ingredientId: ingredient10.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe4.id,
+          ingredientId: ingredient2.id,
+          amount: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe4.id,
+          ingredientId: ingredient1.id,
+          amount: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe4.id,
+          ingredientId: ingredient24.id,
+          amount: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe4.id,
+          ingredientId: ingredient23.id,
+          amount: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe5.id,
+          ingredientId: ingredient22.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe5.id,
+          ingredientId: ingredient14.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe5.id,
+          ingredientId: ingredient9.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe5.id,
+          ingredientId: ingredient8.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe5.id,
+          ingredientId: ingredient10.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe5.id,
+          ingredientId: ingredient5.id,
+          amount: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe5.id,
+          ingredientId: ingredient2.id,
+          amount: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe5.id,
+          ingredientId: ingredient1.id,
+          amount: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe5.id,
+          ingredientId: ingredient25.id,
+          amount: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe6.id,
+          ingredientId: ingredient29.id,
+          amount: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe6.id,
+          ingredientId: ingredient5.id,
+          amount: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe6.id,
+          ingredientId: ingredient1.id,
+          amount: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe6.id,
+          ingredientId: ingredient6.id,
+          amount: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe6.id,
+          ingredientId: ingredient28.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe6.id,
+          ingredientId: ingredient22.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe6.id,
+          ingredientId: ingredient9.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe6.id,
+          ingredientId: ingredient27.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe6.id,
+          ingredientId: ingredient7.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe6.id,
+          ingredientId: ingredient26.id,
+          amount: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
