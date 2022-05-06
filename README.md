@@ -9,7 +9,7 @@
 
 # For this app I used
 
-  Languages: Javascript
-  Frontend Libraries: React - Redux - Axios
-  Backend: Express & Sequelize
-  Database: Postgres
+- Languages: Javascript
+- Frontend Libraries: React - Redux - Axios
+- Backend: Express & Sequelize
+- Database: Postgres
