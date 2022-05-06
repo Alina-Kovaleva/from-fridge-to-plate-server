@@ -171,6 +171,31 @@ module.exports = {
           createdAt: new Date("2022-04-29T08:57:36.863Z"),
           updatedAt: new Date("2022-04-29T08:57:36.863Z"),
         },
+        {
+          name: "boneless rib eye",
+          createdAt: new Date("2022-04-29T08:57:36.863Z"),
+          updatedAt: new Date("2022-04-29T08:57:36.863Z"),
+        },
+        {
+          name: "mushrooms",
+          createdAt: new Date("2022-04-29T08:57:36.863Z"),
+          updatedAt: new Date("2022-04-29T08:57:36.863Z"),
+        },
+        {
+          name: "beef broth",
+          createdAt: new Date("2022-04-29T08:57:36.863Z"),
+          updatedAt: new Date("2022-04-29T08:57:36.863Z"),
+        },
+        {
+          name: "Dijon mustard",
+          createdAt: new Date("2022-04-29T08:57:36.863Z"),
+          updatedAt: new Date("2022-04-29T08:57:36.863Z"),
+        },
+        {
+          name: "pasta",
+          createdAt: new Date("2022-04-29T08:57:36.863Z"),
+          updatedAt: new Date("2022-04-29T08:57:36.863Z"),
+        },
       ],
       {}
     );

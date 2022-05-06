@@ -25,6 +25,9 @@ module.exports = {
     const recipe7 = await Recipe.findOne({
       where: { title: "Cottage Cheese Pancake" },
     });
+    const recipe8 = await Recipe.findOne({
+      where: { title: "Beef Stroganoff" },
+    });
 
     const ingredient1 = await Ingredient.findOne({
       where: { name: "potato" },
@@ -125,6 +128,21 @@ module.exports = {
     const ingredient33 = await Ingredient.findOne({
       where: { name: "sugar" },
     });
+    const ingredient34 = await Ingredient.findOne({
+      where: { name: "boneless rib eye" },
+    });
+    const ingredient35 = await Ingredient.findOne({
+      where: { name: "mushrooms" },
+    });
+    const ingredient36 = await Ingredient.findOne({
+      where: { name: "beef broth" },
+    });
+    const ingredient37 = await Ingredient.findOne({
+      where: { name: "Dijon mustard" },
+    });
+    const ingredient38 = await Ingredient.findOne({
+      where: { name: "pasta" },
+    });
 
     await queryInterface.bulkInsert(
       "recipeingredientamounts",
@@ -136,55 +154,7 @@ module.exports = {
         // createdAt: new Date(),
         //   updatedAt: new Date(),
         // },
-        {
-          recipeId: recipe7.id,
-          ingredientId: ingredient11.id,
-          amount: 1,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          recipeId: recipe7.id,
-          ingredientId: ingredient33.id,
-          amount: 1,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          recipeId: recipe7.id,
-          ingredientId: ingredient32.id,
-          amount: 1,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          recipeId: recipe7.id,
-          ingredientId: ingredient31.id,
-          amount: 1,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          recipeId: recipe7.id,
-          ingredientId: ingredient13.id,
-          amount: 1,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          recipeId: recipe7.id,
-          ingredientId: ingredient5.id,
-          amount: 4,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          recipeId: recipe7.id,
-          ingredientId: ingredient30.id,
-          amount: 2,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
+
         {
           recipeId: recipe1.id,
           ingredientId: ingredient1.id,
@@ -580,6 +550,132 @@ module.exports = {
           recipeId: recipe6.id,
           ingredientId: ingredient26.id,
           amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe7.id,
+          ingredientId: ingredient11.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe7.id,
+          ingredientId: ingredient33.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe7.id,
+          ingredientId: ingredient32.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe7.id,
+          ingredientId: ingredient31.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe7.id,
+          ingredientId: ingredient13.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe7.id,
+          ingredientId: ingredient5.id,
+          amount: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe7.id,
+          ingredientId: ingredient30.id,
+          amount: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe8.id,
+          ingredientId: ingredient14.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe8.id,
+          ingredientId: ingredient9.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe8.id,
+          ingredientId: ingredient7.id,
+          amount: 150,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe8.id,
+          ingredientId: ingredient37.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe8.id,
+          ingredientId: ingredient36.id,
+          amount: 500,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe8.id,
+          ingredientId: ingredient13.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe8.id,
+          ingredientId: ingredient15.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe8.id,
+          ingredientId: ingredient35.id,
+          amount: 300,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe8.id,
+          ingredientId: ingredient10.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe8.id,
+          ingredientId: ingredient11.id,
+          amount: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          recipeId: recipe8.id,
+          ingredientId: ingredient34.id,
+          amount: 600,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

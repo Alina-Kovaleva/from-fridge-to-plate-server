@@ -94,6 +94,18 @@ module.exports = {
         createdAt: new Date("2022-05-04T11:57:36.863Z"),
         updatedAt: new Date("2022-05-04T11:57:36.863Z"),
       },
+      {
+        imageUrl:
+          "https://res.cloudinary.com/crazylittled/image/upload/v1651790696/codaisseur/beef-stroganoff.jpg",
+        title: "Beef Stroganoff",
+        difficulty: 2,
+        duration: 30,
+        description:
+          "Use your fist (or rolling pin or mallet) to flatten the steaks (600 g) to about 3/4cm / 1/3-inch thick. Slice into 5mm / 1/5-inch strips (cut long ones in half), discarding excess fat. Sprinkle with a pinch of salt and pepper. Heat 1 tbsp oil in a large skillet over high heat. Scatter half the beef in the skillet, QUICKLY spread it with tongs. Leave untouched for 30 seconds until browned. Turn beef quickly (as best you can!). Leave untouched for 30 seconds to brown. Immediately remove onto a plate. Don't worry about pink bits and that it will be raw inside. Add remaining 1 tbsp oil and repeat with remaining beef. Turn heat down to medium high. Add butter, melt. Then add onions, cook for 1 minute, then add 300g sliced mushrooms. Cook mushrooms until golden. Scrape bottom of fry pan to get all the golden bits off (this is flavour!). Add 2 tbsp  flour, cook, stirring, for 1 minute. Add half 250ml the broth while stirring. Once incorporated, add remaining broth. Stir, then add 150 ml sour cream and 1 tbsp mustard. Stir until incorporated (don't worry if it looks split, sour cream will 'melt' as it heats). Bring to simmer ,then reduce heat to medium low. Once it thickens to the consistency of pouring cream (3 - 5 minutes), adjust salt and pepper to taste. Add beef back in (including plate juices). Simmer for 1 minute, then remove from stove immediately. Serve over pasta or egg noodles, sprinkled with chives if desired.",
+        userId: user2.id,
+        createdAt: new Date("2022-05-04T12:57:36.863Z"),
+        updatedAt: new Date("2022-05-04T12:57:36.863Z"),
+      },
     ]);
   },
 
