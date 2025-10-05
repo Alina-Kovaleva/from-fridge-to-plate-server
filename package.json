@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Simple express server with sequelize, pg and jwts",
   "main": "index.js",
+  "engines": {
+    "node": ">=22.20.0",
+    "npm": ">=10"
+  },
   "scripts": {
     "start": "node index.js",
     "dev": "env DELAY=1000 npx nodemon .",
@@ -21,16 +25,17 @@
   "author": "Rein Op 't Land",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "pg": "^8.7.1",
-    "sequelize": "^6.6.5",
-    "sequelize-cli": "^6.2.0"
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.5",
+    "sequelize": "^6.37.1",
+    "sequelize-cli": "^6.6.1"
   },
   "devDependencies": {
-    "axios": "^0.19.2",
-    "nodemon": "^2.0.13"
+    "axios": "^1.7.2",
+    "nodemon": "^3.1.4"
   }
 }
